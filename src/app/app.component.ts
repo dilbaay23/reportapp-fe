@@ -1,4 +1,8 @@
 import { Component } from '@angular/core';
+import { AuthService } from '@auth0/auth0-angular';
+import { Router, NavigationEnd } from '@angular/router';
+
+declare let ga: Function;
 
 @Component({
   selector: 'app-root',
@@ -7,4 +11,15 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'reportapp-fe';
+  constructor(public auth: AuthService, public router: Router) {
+
+      this.router.events.subscribe(event => {
+
+        if (event instanceof NavigationEnd) {
+          ga('set', 'page', event.urlAfterRedirects);
+          ga('send', 'pageview');
+        }
+      });
+    }
+
 }

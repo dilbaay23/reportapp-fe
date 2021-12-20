@@ -1,13 +1,27 @@
-<a [routerLink]="['/machine']">
-  <h1>Machines</h1>
-</a>
 
-<a [routerLink]="['/error']">
-  <h1>Errors</h1>
-</a>
 
-<a [routerLink]="['/error-definition']">
-  <h1>Error Definitions</h1>
-</a>
+<ng-container *ngIf="auth.isAuthenticated$ | async; else loggedOut">
+  <ul *ngIf="auth.user$ | async as user">
+    <li>{{ user.name }}</li>
+  </ul>
+  <a [routerLink]="['/machine']">
+    <h1>Machines</h1>
+  </a>
+
+  <a [routerLink]="['/error']">
+    <h1>Errors</h1>
+  </a>
+
+  <a [routerLink]="['/error-definition']">
+    <h1>Error Definitions</h1>
+  </a>
+  <button (click)="auth.logout({ returnTo: document.location.origin })">
+    Log out
+  </button>
+</ng-container>
+
+<ng-template #loggedOut>
+  <button (click)="auth.loginWithRedirect()">Log in</button>
+</ng-template>
 
 
