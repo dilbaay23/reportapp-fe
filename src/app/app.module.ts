@@ -6,6 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { TopBarComponent } from './top-bar/top-bar.component';
 import { ErrorsComponent } from './errors/errors.component';
+import { MachinesService } from "./services/machines.service";
 import { ErrorDefinitionsComponent } from './error-definitions/error-definitions.component';
 import { MachinesComponent } from './machines/machines.component';
 import { LeftMenuComponent } from './left-menu/left-menu.component';
