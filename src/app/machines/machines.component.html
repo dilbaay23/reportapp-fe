@@ -1,15 +1,17 @@
 <div class="list row">
   <div class="col-md-8">
-    <!-- <div class="input-group mb-4">
-       <input type="text" class="form-control" placeholder="Search by title" [(ngModel)]="searchTitle" />
-       <div class="input-group-append">
-         <button class="btn btn-outline-secondary" type="button" (click)="searchByTitle()">
-           Search
-         </button>
-       </div>
-     </div>-->
+    <div class="input-group mb-4">
+      <input type="text" class="form-control" placeholder="Search by type" [(ngModel)]="searchType"/>
+      <div class="input-group-append">
+        <button class="btn btn-outline-secondary" type="button" (click)="searchByType()">
+          Search
+        </button>
+      </div>
+    </div>
   </div>
   <div class="col-md-12">
+    <button type="button" class="btn btn-success btn-lg">Add Machine</button>
+    <hr>
     <h4>Machine List</h4>
 
     <table class="table">
@@ -22,12 +24,14 @@
       </tr>
       </thead>
       <tbody>
-      <tr *ngFor="let machine of machines;">
+      <tr *ngFor="let machine of machines; ; let i = index;">
+        <th scope="row">{{i + 1}}</th>
         <th scope="row">{{machine.id}}</th>
         <td><b>{{machine.type}}</b></td>
         <td>
-          <button type="button" class="btn btn-danger" routerLink="/machine/{{machine.id}}">Edit</button>
-          <button type="button" class="btn btn-warning">Delete</button>
+          <button type="button" class="btn btn-warning btn-sm">Delete</button>
+          &nbsp;&nbsp;&nbsp;
+          <button type="button" class="btn btn-info btn-sm">Update</button>
         </td>
       </tr>
       </tbody>

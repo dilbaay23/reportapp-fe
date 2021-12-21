@@ -1,1 +1,44 @@
-<p>errors works!</p>
+<div class="list row">
+  <div class="col-md-8">
+    <div class="input-group mb-4">
+      <input type="text" class="form-control" placeholder="Search by error Code" [(ngModel)]="searchErrorCode"/>
+      <div class="input-group-append">
+        <button class="btn btn-outline-secondary" type="button" (click)="searchByErrorCode()">
+          Search By Error Code
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-12">
+    <h4>Error List</h4>
+
+    <table class="table">
+      <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Id</th>
+        <th scope="col">Error Code</th>
+        <th scope="col">Machine Id</th>
+        <th scope="col">Date</th>
+        <th scope="col" style="min-width: 150px;">Action</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let error of errors; let i = index;">
+        <th scope="row">{{i + 1}}</th>
+        <th scope="row">{{error.id}}</th>
+        <td><b>{{error.errorCode}}</b></td>
+        <td><b>{{error.machineId}}</b></td>
+        <td><b>{{error.date}}</b></td>
+        <td>
+          <button type="button" class="btn btn-warning btn-sm">Delete</button>
+          &nbsp;&nbsp;&nbsp;
+          <button type="button" class="btn btn-info btn-sm">Update</button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+
+  </div>
+</div>
+

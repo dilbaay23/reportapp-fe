@@ -1,0 +1,17 @@
+<div style="width: 500px; margin: auto;">
+  <div class="submit-form">
+    <div *ngIf="!isMachineAdded">
+      <div class="form-group">
+        <label for="type">Type</label>
+        <input type="text" class="form-control" id="type" required [(ngModel)]="machine.type" name="type"/>
+      </div>
+
+      <button (click)="addMachine()" class="btn btn-success">Create</button>
+    </div>
+
+    <div *ngIf="isMachineAdded">
+      <h3>New machine added!</h3>
+      <button class="btn btn-success" (click)="newMachine()"> + Add More</button>
+    </div>
+  </div>
+</div>

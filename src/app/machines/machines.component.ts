@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MachinesService } from "../services/machines.service";
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 
 @Component({
   selector: 'app-machines',
@@ -8,6 +9,9 @@ import { MachinesService } from "../services/machines.service";
 })
 export class MachinesComponent implements OnInit {
   machines : any;
+  currentMachine:any;
+  currentIndex = -1;
+  searchType = '';
 
   constructor( private machinesService : MachinesService) { }
       ngOnInit(): void {
@@ -15,7 +19,7 @@ export class MachinesComponent implements OnInit {
   };
 
   getMachines(): void {
-      this.machinesService.getJSON()
+      this.machinesService.list()
         .subscribe(
           (machines: any) => {
             this.machines = machines;
@@ -24,5 +28,29 @@ export class MachinesComponent implements OnInit {
             console.log(error);
           });
     }
+
+    deleteMachine(id:number){
+        this.machinesService.delete(id)
+        .subscribe(
+          response => {
+            this.getMachines();
+          },
+          error => {
+            console.log(error);
+          });
+      }
+
+      // Search items
+        searchByType(): void {
+          this.machinesService.filterByType(this.searchType)
+            .subscribe(
+              machines => {
+                this.machines = machines;
+              },
+              error => {
+                console.log(error);
+              });
+        }
+
 
 }

@@ -6,9 +6,9 @@ import { ErrorDefinitionsComponent } from "./error-definitions/error-definitions
 
 
 
-const routes: Routes = [ { path: 'machine', component: MachinesComponent },
-                         { path: 'error', component: ErrorsComponent },
-                         { path: 'error-definition', component: ErrorDefinitionsComponent },
+const routes: Routes = [ { path: 'machines', component: MachinesComponent },
+                         { path: 'errors', component: ErrorsComponent },
+                         { path: 'error-definitions', component: ErrorDefinitionsComponent },
 ];
 
 @NgModule({

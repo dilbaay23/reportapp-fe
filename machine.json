@@ -1,10 +1,12 @@
-[
-  {
-    "id": "qjdjskfjdlskgklfgk",
-    "type": "t1"
-  },
-  {
-    "id": "azaerere",
-    "type": "t2"
-  }
-]
+{
+  "machines": [
+    {
+      "id": "qsdjqsdjsqfjksdfk",
+      "type": "t1"
+    },
+    {
+      "id": "azeyeurreitior",
+      "type": "t2"
+    }
+  ]
+}

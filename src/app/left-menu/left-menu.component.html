@@ -1,27 +1,31 @@
+<div class="leftmenudiv">
 
 
-<ng-container *ngIf="auth.isAuthenticated$ | async; else loggedOut">
-  <ul *ngIf="auth.user$ | async as user">
-    <li>{{ user.name }}</li>
-  </ul>
-  <a [routerLink]="['/machine']">
-    <h1>Machines</h1>
-  </a>
+  <ng-container *ngIf="auth.isAuthenticated$ | async; else loggedOut">
+    <div *ngIf="auth.user$ | async as user">
+      Welcome {{ user.name }}
+    </div>
+    <a [routerLink]="['/machines']">
+      <h2>Machines</h2>
+    </a>
 
-  <a [routerLink]="['/error']">
-    <h1>Errors</h1>
-  </a>
+    <a [routerLink]="['/errors']">
+      <h2>Errors</h2>
+    </a>
 
-  <a [routerLink]="['/error-definition']">
-    <h1>Error Definitions</h1>
-  </a>
-  <button (click)="auth.logout({ returnTo: document.location.origin })">
-    Log out
-  </button>
-</ng-container>
+    <a [routerLink]="['/error-definitions']">
+      <h2>Error Definitions</h2>
+    </a>
+    &nbsp;&nbsp;&nbsp;
+    <button type="button" class="btn btn-secondary" (click)="auth.logout({ returnTo: document.location.origin })">
+      Log out
+    </button>
+  </ng-container>
 
-<ng-template #loggedOut>
-  <button (click)="auth.loginWithRedirect()">Log in</button>
-</ng-template>
+  <ng-template #loggedOut>
+    &nbsp;&nbsp;&nbsp;
+    <button type="button" class="btn btn-success" (click)="auth.loginWithRedirect()">Log in</button>
+  </ng-template>
 
+</div>
 
