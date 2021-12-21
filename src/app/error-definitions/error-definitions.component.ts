@@ -29,7 +29,7 @@ export class ErrorDefinitionsComponent implements OnInit {
                   console.log(error);
                 });
           }
-      deleteErrorDefinitions(errorCode:number){
+      deleteErrorDefinitions(errorCode : number){
               this.errorDefinitionService.delete(errorCode)
               .subscribe(
                 response => {

@@ -10,10 +10,10 @@ import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http
 })
 export class ErrorsComponent implements OnInit {
 
-  errors : any;
+  errorList : any;
   currentError:any;
   currentIndex = -1;
-  searchType = '';
+  searchErrorCode = '';
 
   constructor( private errorService : ErrorService) { }
         ngOnInit(): void {
@@ -23,8 +23,8 @@ export class ErrorsComponent implements OnInit {
     getErrors(): void {
           this.errorService.list()
             .subscribe(
-              (errorDefinitions: any) => {
-                this.errors = errors;
+              (errorList: any) => {
+                this.errorList = errorList;
               },
               (error: any) => {
                 console.log(error);
@@ -43,10 +43,10 @@ export class ErrorsComponent implements OnInit {
 
           // Search items
     searchByErrorCode(): void {
-              this.errorService.filterByErrorCode(this.searchType)
+              this.errorService.filterByErrorCode(this.searchErrorCode)
                 .subscribe(
-                  errors => {
-                    this.errors = errors;
+                  errorList => {
+                    this.errorList = errorList;
                   },
                   error => {
                     console.log(error);

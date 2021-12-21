@@ -40,8 +40,8 @@ export class ErrorService {
        }
 
        // Search By Name
-       filterByType(type: any): Observable<any> {
-         return this.httpClient.get(`${this.apiUrl}?type_like=${type}`).pipe(
+       filterByErrorCode(errorCode: any): Observable<any> {
+         return this.httpClient.get(`${this.apiUrl}?errorCode_like=${errorCode}`).pipe(
            catchError(this.handleError)
          );
        }

@@ -24,11 +24,11 @@
       </tr>
       </thead>
       <tbody>
-      <tr *ngFor="let error of errors; let i = index;">
+      <tr *ngFor="let error of errorList; let i = index;">
         <th scope="row">{{i + 1}}</th>
         <th scope="row">{{error.id}}</th>
-        <td><b>{{error.errorCode}}</b></td>
-        <td><b>{{error.machineId}}</b></td>
+        <td><b>{{error.errorDefinition.errorCode}}</b></td>
+        <td><b>{{error.machine.id}}</b></td>
         <td><b>{{error.date}}</b></td>
         <td>
           <button type="button" class="btn btn-warning btn-sm">Delete</button>

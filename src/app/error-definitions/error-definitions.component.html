@@ -22,7 +22,7 @@
       </tr>
       </thead>
       <tbody>
-      <tr *ngFor="errorDefinition ed of errorDefinitions; let i = index;">
+      <tr *ngFor="let errorDefinition of errorDefinitions; let i = index;">
         <th scope="row">{{i + 1}}</th>
         <th scope="row">{{errorDefinition.errorCode}}</th>
         <td><b>{{errorDefinition.errorDetail}}</b></td>
