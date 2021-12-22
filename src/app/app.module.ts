@@ -22,7 +22,7 @@ import { DetailErrorComponent } from './detail-error/detail-error.component';
 import { DetailErrorDefinitionComponent } from './detail-error-definition/detail-error-definition.component';
 
  let httpInterceptor = {
-    allowedList: [`http://localhost:8080/*`],
+    allowedList: [`api/*`],
   };
 
 
@@ -48,7 +48,7 @@ import { DetailErrorDefinitionComponent } from './detail-error-definition/detail
     FormsModule,
     AuthModule.forRoot({
           domain: 'moonismoon.eu.auth0.com',
-          clientId: 'qwSoP6qhcgpA4RZIhUu8GB1GITOIhK5C',
+          clientId: 'a2TNMtxigdDnv9quZFCl5azkxfK8kqOe',
           httpInterceptor : httpInterceptor,
         }),
   ],

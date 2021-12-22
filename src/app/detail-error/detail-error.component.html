@@ -5,7 +5,7 @@
       <label><strong>id:</strong></label> {{ currentError.id }}
     </div>
     <div>
-      <label><strong>Error Cdoe:</strong></label>
+      <label><strong>Error Code:</strong></label>
       {{ currentError.errorDefinition.errorCode }}
     </div>
     <div>
@@ -55,13 +55,13 @@
     </form>
 
 
-    <button class="badge badge-danger mr-2" (click)="deleteError()">
+    <button class="btn btn-warning mr-2" (click)="deleteError()">
       Delete
     </button>
-
+    &nbsp;&nbsp;&nbsp;
     <button
       type="submit"
-      class="badge badge-success mb-2"
+      class="btn btn-danger"
       (click)="updateError()"
     >
       Update
@@ -69,8 +69,11 @@
     <p>{{ message }}</p>
   </div>
 
+
   <div *ngIf="!currentError.id">
     <br/>
     <p>Cannot access this Error...</p>
   </div>
+
+
 </ng-template>

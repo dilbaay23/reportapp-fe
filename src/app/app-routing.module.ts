@@ -20,7 +20,7 @@ const routes: Routes = [ { path: 'machines', component: MachinesComponent, canAc
                          { path: 'createMachine', component: CreateMachineComponent,  canActivate: [AuthGuard], },
                          { path: 'createErrorDefinition', component: CreateErrorDefinitionComponent ,  canActivate: [AuthGuard],},
                          { path: 'detailMachine/:id', component: DetailMachineComponent,  canActivate: [AuthGuard], },
-                         { path: 'detailErrorDefinition', component: DetailErrorDefinitionComponent ,  canActivate: [AuthGuard],},
+                         { path: 'detailErrorDefinition/:errorCode', component: DetailErrorDefinitionComponent ,  canActivate: [AuthGuard],},
                          { path: 'detailError/:id', component: DetailErrorComponent ,  canActivate: [AuthGuard],},
 ];
 

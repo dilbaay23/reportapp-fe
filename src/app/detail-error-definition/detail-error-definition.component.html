@@ -1,1 +1,75 @@
-<p>detail-error-definition works!</p>
+<div *ngIf="viewMode; else editable">
+  <div *ngIf="currentErrorDefinition.id">
+    <h4>Error Definition</h4>
+    <div>
+      <label><strong>errorCode:</strong></label> {{ currentErrorDefinition.errorCode }}
+    </div>
+    <div>
+      <label><strong>Error Detail:</strong></label>
+      {{ currentErrorDefinition.errorDetail }}
+    </div>
+    <a
+      class="badge badge-warning"
+      routerLink="/errorDefinitions/{{ currentErrorDefinition.errorCode }}"
+    >
+      Edit
+    </a>
+  </div>
+
+  <div *ngIf="!currentErrorDefinition">
+    <br/>
+    <p>Please click on an Error Definition...</p>
+  </div>
+</div>
+
+<ng-template #editable>
+  <div *ngIf="currentErrorDefinition.errorCode" class="edit-form">
+    <h4>Error Definition</h4>
+    <form>
+      <div class="form-group">
+        <label for="errorCode">errorCode</label>
+        <input
+          type="text"
+          class="form-control"
+          id="errorCode"
+          [(ngModel)]="currentErrorDefinition.errorCode"
+          name="errorCode"
+        />
+      </div>
+      <div class="form-group">
+        <label for="errorDetail">Error Detail</label>
+        <input
+          type="text"
+          class="form-control"
+          id="errorDetail"
+          [(ngModel)]="currentErrorDefinition.errorDetail"
+          name="errorDetail"
+        />
+      </div>
+
+    </form>
+
+
+    <button class="btn btn-warning mr-2" (click)="deleteErrorDefinition()">
+      Delete
+    </button>
+    &nbsp;&nbsp;&nbsp;
+    <button
+      type="submit"
+      class="btn btn-danger"
+      (click)="updateErrorDefinition()"
+    >
+      Update
+    </button>
+    <p>{{ message }}</p>
+  </div>
+
+
+  <div *ngIf="!currentErrorDefinition.errorCode">
+    <br/>
+    <p>Cannot access this Error Definition...</p>
+  </div>
+
+
+</ng-template>
+
