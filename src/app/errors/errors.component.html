@@ -1,7 +1,7 @@
 <div class="list row">
   <div class="col-md-8">
     <div class="input-group mb-4">
-      <input type="text" class="form-control" placeholder="Search by error Code" [(ngModel)]="searchErrorCode"/>
+      <input type="text" class="form-control" placeholder="Search by Error Code" [(ngModel)]="searchErrorCode"/>
       <div class="input-group-append">
         <button class="btn btn-outline-secondary" type="button" (click)="searchByErrorCode()">
           Search By Error Code
@@ -34,6 +34,10 @@
           <button type="button" class="btn btn-warning btn-sm">Delete</button>
           &nbsp;&nbsp;&nbsp;
           <button type="button" class="btn btn-info btn-sm">Update</button>
+          &nbsp;&nbsp;&nbsp;
+          <a routerLink="/detailError/{{ error.id }}">
+            <button type="button" class="btn btn-success btn-sm">Details</button>
+          </a>
         </td>
       </tr>
       </tbody>

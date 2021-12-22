@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { AuthService } from '@auth0/auth0-angular';
 import { Router, NavigationEnd } from '@angular/router';
 
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
+
 declare let ga: Function;
 
 @Component({

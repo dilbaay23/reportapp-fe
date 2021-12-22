@@ -9,6 +9,7 @@ import { Observable, throwError } from 'rxjs';
 export class MachinesService {
 
   apiUrl: string = 'http://localhost:8080/api/machine/listAll';
+  apiUrlForCreate: string = 'http://localhost:8080/api/machine/addMachine';
   headers = new HttpHeaders().set('Content-Type', 'application/json');
 
   constructor(private httpClient: HttpClient) { }
@@ -24,16 +25,17 @@ export class MachinesService {
       return this.httpClient.get(`${this.apiUrl}/${id}`).pipe(
         catchError(this.handleError)
       );
+
     }
 
-      create(data: any): Observable<any> {
-        return this.httpClient.post(this.apiUrl, data).pipe(
+  create(data: any): Observable<any> {
+        return this.httpClient.post(this.apiUrlForCreate, data).pipe(
           catchError(this.handleError)
         );
       }
 
   // Edit/ Update
-    update(id: any, data: any): Observable<any> {
+  update(id: any, data: any): Observable<any> {
       return this.httpClient.put(`${this.apiUrl}/${id}`, data).pipe(
         catchError(this.handleError)
       );

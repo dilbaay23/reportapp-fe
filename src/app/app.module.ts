@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { AuthModule } from '@auth0/auth0-angular';
+// Import the module from the SDK
+import { AuthHttpInterceptor, AuthModule } from '@auth0/auth0-angular';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -14,8 +15,15 @@ import { FooterComponent } from './footer/footer.component';
 import { CreateMachineComponent } from './create-machine/create-machine.component';
 
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { CreateErrorDefinitionComponent } from './create-error-definition/create-error-definition.component';
+import { DetailMachineComponent } from './detail-machine/detail-machine.component';
+import { DetailErrorComponent } from './detail-error/detail-error.component';
+import { DetailErrorDefinitionComponent } from './detail-error-definition/detail-error-definition.component';
+
+ let httpInterceptor = {
+    allowedList: [`http://localhost:8080/*`],
+  };
 
 
 @NgModule({
@@ -28,7 +36,10 @@ import { CreateErrorDefinitionComponent } from './create-error-definition/create
     LeftMenuComponent,
     FooterComponent,
     CreateMachineComponent,
-    CreateErrorDefinitionComponent
+    CreateErrorDefinitionComponent,
+    DetailMachineComponent,
+    DetailErrorComponent,
+    DetailErrorDefinitionComponent
   ],
   imports: [
     BrowserModule,
@@ -37,10 +48,16 @@ import { CreateErrorDefinitionComponent } from './create-error-definition/create
     FormsModule,
     AuthModule.forRoot({
           domain: 'moonismoon.eu.auth0.com',
-          clientId: 'qwSoP6qhcgpA4RZIhUu8GB1GITOIhK5C'
+          clientId: 'qwSoP6qhcgpA4RZIhUu8GB1GITOIhK5C',
+          httpInterceptor : httpInterceptor,
         }),
   ],
-  providers: [],
+    providers: [],
+
+/*   providers: [  {provide: HTTP_INTERCEPTORS,
+                    useClass: AuthHttpInterceptor,
+                    multi: true,
+                  }], */
   bootstrap: [AppComponent]
 })
 export class AppModule { }

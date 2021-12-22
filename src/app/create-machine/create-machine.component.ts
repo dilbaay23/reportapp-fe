@@ -21,7 +21,7 @@ export class CreateMachineComponent implements OnInit {
   }
 
   // Add New
-    addMachine(): void {
+  addMachine(): void {
       const data = {
         type : this.machine.type
       };

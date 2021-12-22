@@ -1,0 +1,76 @@
+<div *ngIf="viewMode; else editable">
+  <div *ngIf="currentError.id">
+    <h4>Error</h4>
+    <div>
+      <label><strong>id:</strong></label> {{ currentError.id }}
+    </div>
+    <div>
+      <label><strong>Error Cdoe:</strong></label>
+      {{ currentError.errorDefinition.errorCode }}
+    </div>
+    <div>
+      <label><strong>Machine Id:</strong></label>
+      {{ currentError.machine.id }}
+    </div>
+
+    <a
+      class="badge badge-warning"
+      routerLink="/errors/{{ currentError.id }}"
+    >
+      Edit
+    </a>
+  </div>
+
+  <div *ngIf="!currentError">
+    <br/>
+    <p>Please click on an Error...</p>
+  </div>
+</div>
+
+<ng-template #editable>
+  <div *ngIf="currentError.id" class="edit-form">
+    <h4>Error</h4>
+    <form>
+      <div class="form-group">
+        <label for="errorCode">errorCode</label>
+        <input
+          type="text"
+          class="form-control"
+          id="errorCode"
+          [(ngModel)]="currentError.errorDefinition.errorCode"
+          name="errorCode"
+        />
+      </div>
+      <div class="form-group">
+        <label for="machineId">Machine Id</label>
+        <input
+          type="text"
+          class="form-control"
+          id="machineId"
+          [(ngModel)]="currentError.machine.id"
+          name="machineId"
+        />
+      </div>
+
+    </form>
+
+
+    <button class="badge badge-danger mr-2" (click)="deleteError()">
+      Delete
+    </button>
+
+    <button
+      type="submit"
+      class="badge badge-success mb-2"
+      (click)="updateError()"
+    >
+      Update
+    </button>
+    <p>{{ message }}</p>
+  </div>
+
+  <div *ngIf="!currentError.id">
+    <br/>
+    <p>Cannot access this Error...</p>
+  </div>
+</ng-template>
