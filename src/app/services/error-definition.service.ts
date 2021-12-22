@@ -8,7 +8,7 @@ import { Observable, throwError } from 'rxjs';
 })
 export class ErrorDefinitionService {
 
-  apiUrl: string = 'http://localhost:8080/api/errorDefinition/listAll';
+  apiUrl: string = 'http://localhost:8080/api/errorDefinition/query';
   headers = new HttpHeaders().set('Content-Type', 'application/json');
 
   constructor(private httpClient: HttpClient) { }
@@ -24,6 +24,12 @@ export class ErrorDefinitionService {
               catchError(this.handleError)
             );
           }
+
+      create(data: any): Observable<any> {
+            return this.httpClient.post(this.apiUrl, data).pipe(
+                    catchError(this.handleError)
+            );
+      }
 
       // Edit/ Update
           update(errorCode : any, data: any): Observable<any> {

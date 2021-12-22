@@ -1,1 +1,25 @@
-<p>create-error-definition works!</p>
+<div style="width: 500px; margin: auto;">
+  <div class="submit-form">
+    <div *ngIf="!isErrorDefinitionAdded">
+      <div class="form-group">
+        <label for="errorCode">Error Code</label>
+        <br>
+        <input type="text" class="form-control" id="errorCode" required [(ngModel)]="errorDefinition.errorCode"
+               name="errorCode"/>
+      </div>
+
+      <div class="form-group">
+        <label for="errorDetail">Error Detail</label>
+        <input class="form-control" id="errorDetail" required [(ngModel)]="errorDefinition.errorDetail"
+               name="errorDetail"/>
+      </div>
+      <br>
+      <button (click)="addErrorDefinition()" class="btn btn-success">Create</button>
+    </div>
+
+    <div *ngIf="isErrorDefinitionAdded">
+      <h3>New Error Definition added!</h3>
+      <button class="btn btn-success" (click)="newErrorDefinition()"> + Add More</button>
+    </div>
+  </div>
+</div>

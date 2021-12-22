@@ -3,9 +3,10 @@
     <div *ngIf="!isMachineAdded">
       <div class="form-group">
         <label for="type">Type</label>
+        <br>
         <input type="text" class="form-control" id="type" required [(ngModel)]="machine.type" name="type"/>
       </div>
-
+      <br>
       <button (click)="addMachine()" class="btn btn-success">Create</button>
     </div>
 
