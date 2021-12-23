@@ -14,6 +14,7 @@ export class MachinesComponent implements OnInit {
   searchType = '';
 
   constructor( private machinesService : MachinesService) { }
+
       ngOnInit(): void {
       this.getMachines();
   };
@@ -29,7 +30,7 @@ export class MachinesComponent implements OnInit {
           });
     }
 
-    deleteMachine(id:number){
+    delete(id:number){
         this.machinesService.delete(id)
         .subscribe(
           response => {
@@ -41,7 +42,7 @@ export class MachinesComponent implements OnInit {
       }
 
       // Search items
-        searchByType(): void {
+    searchByType(): void {
           this.machinesService.filterByType(this.searchType)
             .subscribe(
               machines => {

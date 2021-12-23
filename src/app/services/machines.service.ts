@@ -1,6 +1,7 @@
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError } from 'rxjs/operators';
+import { Machine } from "../models/machine";
 import { Observable, throwError } from 'rxjs';
 
 @Injectable({
@@ -8,15 +9,14 @@ import { Observable, throwError } from 'rxjs';
 })
 export class MachinesService {
 
-  apiUrl: string = 'http://localhost:8080/api/machine/listAll';
-  apiUrlForCreate: string = 'http://localhost:8080/api/machine/addMachine';
+  apiUrl: string = 'http://localhost:8080/api/machine';
   headers = new HttpHeaders().set('Content-Type', 'application/json');
 
   constructor(private httpClient: HttpClient) { }
 
 
-   list(): Observable<any> {
-      return this.httpClient.get(this.apiUrl).pipe(
+   list(): Observable<Machine[]> {
+      return this.httpClient.get<Machine[]>(`${this.apiUrl}/listAll`).pipe(
         catchError(this.handleError)
       );
   }
@@ -29,7 +29,7 @@ export class MachinesService {
     }
 
   create(data: any): Observable<any> {
-        return this.httpClient.post(this.apiUrlForCreate, data).pipe(
+        return this.httpClient.post(`${this.apiUrl}/addMachine`, data).pipe(
           catchError(this.handleError)
         );
       }
@@ -42,7 +42,7 @@ export class MachinesService {
     }
 
     // Delete
-    delete(id: any): Observable<any> {
+    delete(id: number): Observable<any> {
       return this.httpClient.delete(`${this.apiUrl}/${id}`).pipe(
         catchError(this.handleError)
       );

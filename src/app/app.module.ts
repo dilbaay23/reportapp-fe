@@ -15,15 +15,30 @@ import { FooterComponent } from './footer/footer.component';
 import { CreateMachineComponent } from './create-machine/create-machine.component';
 
 import { FormsModule } from '@angular/forms';
+import { NgSelectModule } from '@ng-select/ng-select';
+import { FlatpickrModule } from 'angularx-flatpickr';
+
+
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { CreateErrorDefinitionComponent } from './create-error-definition/create-error-definition.component';
 import { DetailMachineComponent } from './detail-machine/detail-machine.component';
 import { DetailErrorComponent } from './detail-error/detail-error.component';
 import { DetailErrorDefinitionComponent } from './detail-error-definition/detail-error-definition.component';
+import { ReportComponent } from './report/report.component';
+import { MachineSelectComponent } from './machine-select/machine-select.component';
+import { ErrorDefinitionSelectComponent } from './error-definition-select/error-definition-select.component';
+import { DateSelectComponent } from './date-select/date-select.component';
+
+
 
  let httpInterceptor = {
-    allowedList: [`api/*`],
+    allowedList: [
+      {
+        uri: `http://localhost:8080/*`
+      }
+    ],
   };
+
 
 
 @NgModule({
@@ -39,25 +54,32 @@ import { DetailErrorDefinitionComponent } from './detail-error-definition/detail
     CreateErrorDefinitionComponent,
     DetailMachineComponent,
     DetailErrorComponent,
-    DetailErrorDefinitionComponent
+    DetailErrorDefinitionComponent,
+    ReportComponent,
+    MachineSelectComponent,
+    ErrorDefinitionSelectComponent,
+    DateSelectComponent,
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
+    NgSelectModule,
+    FlatpickrModule.forRoot(),
     AuthModule.forRoot({
           domain: 'moonismoon.eu.auth0.com',
-          clientId: 'a2TNMtxigdDnv9quZFCl5azkxfK8kqOe',
+          clientId: 'qwSoP6qhcgpA4RZIhUu8GB1GITOIhK5C',
+          audience: "localhost",
           httpInterceptor : httpInterceptor,
         }),
   ],
-    providers: [],
-
-/*   providers: [  {provide: HTTP_INTERCEPTORS,
+  providers: [  {provide: HTTP_INTERCEPTORS,
                     useClass: AuthHttpInterceptor,
                     multi: true,
-                  }], */
+                  }
+                  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

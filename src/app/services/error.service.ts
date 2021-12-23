@@ -8,13 +8,14 @@ import { Observable, throwError } from 'rxjs';
 })
 export class ErrorService {
 
-  apiUrl: string = 'http://localhost:8080/api/error/listAll';
+  apiUrl: string = 'http://localhost:8080/api/error';
+  apiUrlQuery: string = 'http://localhost:8080/api/report/query';
   headers = new HttpHeaders().set('Content-Type', 'application/json');
 
   constructor(private httpClient: HttpClient) { }
 
   list(): Observable<any> {
-        return this.httpClient.get(this.apiUrl).pipe(
+        return this.httpClient.get(`${this.apiUrl}/listAll`).pipe(
           catchError(this.handleError)
         );
     }
@@ -45,6 +46,12 @@ export class ErrorService {
            catchError(this.handleError)
          );
        }
+
+       query(data: any): Observable<any> {
+               return this.httpClient.post(this.apiUrlQuery, data).pipe(
+                 catchError(this.handleError)
+               );
+      }
 
        handleError(error: HttpErrorResponse) {
            if (error.error instanceof ErrorEvent) {

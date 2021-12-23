@@ -31,13 +31,11 @@
         <th scope="row">{{machine.id}}</th>
         <td><b>{{machine.type}}</b></td>
         <td>
-          <button type="button" class="btn btn-warning btn-sm" (click)="deleteMachine(machine.id)">Delete</button>
-          &nbsp;&nbsp;&nbsp;
-          <button type="button" class="btn btn-info btn-sm" routerLink="/machine/{{machine.id}}">Update</button>
-          &nbsp;&nbsp;&nbsp;
+
           <a [routerLink]="['/detailMachine', machine.id]">
             <button type="button" class="btn btn-success btn-sm">Details</button>
           </a>
+          &nbsp;&nbsp;&nbsp;
 
         </td>
       </tr>

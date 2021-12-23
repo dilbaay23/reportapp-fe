@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { MachinesComponent } from "./machines/machines.component";
+import { ReportComponent } from "./report/report.component";
 import { CreateMachineComponent } from "./create-machine/create-machine.component";
 import { DetailMachineComponent } from "./detail-machine/detail-machine.component";
 import { CreateErrorDefinitionComponent } from "./create-error-definition/create-error-definition.component";
@@ -16,6 +17,7 @@ import { AuthGuard } from '@auth0/auth0-angular';
 
 const routes: Routes = [ { path: 'machines', component: MachinesComponent, canActivate: [AuthGuard], },
                          { path: 'errors', component: ErrorsComponent , canActivate: [AuthGuard],},
+                         { path: 'reports', component: ReportComponent , canActivate: [AuthGuard],},
                          { path: 'error-definitions', component: ErrorDefinitionsComponent,  canActivate: [AuthGuard], },
                          { path: 'createMachine', component: CreateMachineComponent,  canActivate: [AuthGuard], },
                          { path: 'createErrorDefinition', component: CreateErrorDefinitionComponent ,  canActivate: [AuthGuard],},

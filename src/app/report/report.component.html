@@ -1,0 +1,49 @@
+<div class="row">
+
+  <div class="col-md-4">
+ <app-machine-select [dto]="errorQueryDto"> </app-machine-select>
+  </div>
+
+  <div class="col-md-4">
+    <app-error-definition-select  [dto]="errorQueryDto"></app-error-definition-select>
+  </div>
+
+  <div class="col-md-3">
+    <app-date-select  [dto]="errorQueryDto"></app-date-select>
+  </div>
+  &nbsp;&nbsp;&nbsp;
+  &nbsp;&nbsp;&nbsp;
+  <div class="col-md-1">
+    <button class="btn btn-outline-danger" type="button" (click)="query()">
+      Query
+    </button>
+  </div>
+
+  <div class="col-md-12">
+    <h4>Error List</h4>
+
+    <table class="table">
+      <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Id</th>
+        <th scope="col">Error Code</th>
+        <th scope="col">Machine Id</th>
+        <th scope="col">Date</th>
+
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let error of errorList; let i = index;">
+        <th scope="row">{{i + 1}}</th>
+        <th scope="row">{{error.id}}</th>
+        <td><b>{{error.errorDefinition.errorCode}}</b></td>
+        <td><b>{{error.machine.id}}</b></td>
+        <td><b>{{error.date}}</b></td>
+        </tr>
+      </tbody>
+    </table>
+
+    </div>
+
+</div>

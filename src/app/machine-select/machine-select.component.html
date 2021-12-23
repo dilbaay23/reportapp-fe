@@ -1,0 +1,6 @@
+&nbsp;&nbsp;&nbsp;
+<p>Select by Machine Id</p>
+<ng-select [(ngModel)]="dto.machineId">
+  <ng-option *ngFor="let machine of machines" [value]="machine.id">{{machine.id}}</ng-option>
+
+</ng-select>

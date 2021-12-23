@@ -1,0 +1,13 @@
+&nbsp;&nbsp;&nbsp;
+<p>Select by Date</p>
+
+<input
+  class="form-control"
+  type="text"
+  mwlFlatpickr
+  (flatpickrValueUpdate)="updateDates($event)"
+  [altInput]="true"
+  [minDate]="minDate"
+  [maxDate]="maxDate"
+  [convertModelValue]="true"
+  mode="range">

@@ -1,21 +1,28 @@
 <div class="leftmenudiv">
 
-
+  &nbsp;&nbsp;&nbsp;
+  &nbsp;&nbsp;&nbsp;
   <ng-container *ngIf="auth.isAuthenticated$ | async; else loggedOut">
     <div *ngIf="auth.user$ | async as user">
       Welcome {{ user.name }}
     </div>
+    &nbsp;&nbsp;&nbsp;
+    <a [routerLink]="['/reports']">
+      <h3>Reports</h3>
+    </a>
+    &nbsp;&nbsp;&nbsp;
     <a [routerLink]="['/machines']">
-      <h2>Machines</h2>
+      <h3>Machines</h3>
     </a>
-
+    &nbsp;&nbsp;&nbsp;
     <a [routerLink]="['/errors']">
-      <h2>Errors</h2>
+      <h3>Errors</h3>
     </a>
-
+    &nbsp;&nbsp;&nbsp;
     <a [routerLink]="['/error-definitions']">
-      <h2>Error Definitions</h2>
+      <h3>Error Definitions</h3>
     </a>
+    &nbsp;&nbsp;&nbsp;
     &nbsp;&nbsp;&nbsp;
     <button type="button" class="btn btn-secondary" (click)="auth.logout({ returnTo: document.location.origin })">
       Log out

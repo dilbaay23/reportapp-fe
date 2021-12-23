@@ -1,0 +1,6 @@
+&nbsp;&nbsp;&nbsp;
+<p>Select by Error Definition</p>
+<ng-select [(ngModel)]="dto.errorCode">
+  <ng-option *ngFor="let errorDefinition of errorDefinitions" [value]="errorDefinition.errorCode">{{errorDefinition.errorCode}}-{{errorDefinition.errorDetail}}</ng-option>
+</ng-select>
+

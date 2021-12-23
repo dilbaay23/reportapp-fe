@@ -8,14 +8,13 @@ import { Observable, throwError } from 'rxjs';
 })
 export class ErrorDefinitionService {
 
-  apiUrl: string = 'http://localhost:8080/api/errorDefinition/query';
-  apiUrlForCreate: string = 'http://localhost:8080/api/errorDefinition/addErrorDefinition';
+  apiUrl: string = 'http://localhost:8080/api/errorDefinition';
   headers = new HttpHeaders().set('Content-Type', 'application/json');
 
   constructor(private httpClient: HttpClient) { }
 
    list(): Observable<any> {
-          return this.httpClient.get(this.apiUrl).pipe(
+          return this.httpClient.get(`${this.apiUrl}/query`).pipe(
             catchError(this.handleError)
           );
       }
@@ -27,7 +26,7 @@ export class ErrorDefinitionService {
           }
 
       create(data: any): Observable<any> {
-            return this.httpClient.post(this.apiUrlForCreate, data).pipe(
+            return this.httpClient.post(`${this.apiUrl}/addErrorDefinition`, data).pipe(
                     catchError(this.handleError)
             );
       }
