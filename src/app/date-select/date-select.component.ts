@@ -1,7 +1,6 @@
-import { Component, OnInit, Input, EventEmitter  } from '@angular/core';
-import { ErrorQueryDto } from "../models/error-query-dto";
-import { FlatPickrOutputOptions } from 'angularx-flatpickr/flatpickr.directive';
-
+import {Component, Input, OnInit} from '@angular/core';
+import {ErrorQueryDto} from "../models/error-query-dto";
+import {FlatPickrOutputOptions} from 'angularx-flatpickr/flatpickr.directive';
 
 
 @Component({
@@ -11,7 +10,7 @@ import { FlatPickrOutputOptions } from 'angularx-flatpickr/flatpickr.directive';
 })
 export class DateSelectComponent implements OnInit {
 
-  @Input() dto : ErrorQueryDto ;
+  @Input() dto: ErrorQueryDto;
   selectedDate : Date;
   minDate : Date;
   maxDate : Date;
@@ -23,8 +22,9 @@ export class DateSelectComponent implements OnInit {
   }
 
   ngOnInit(): void {
-     this.minDate = new Date();
-    this.maxDate= new Date()
+    this.minDate = new Date();
+    this.maxDate = new Date();
+    this.maxDate.setDate(this.maxDate.getDate() + 1);
 
     this.minDate.setDate(this.minDate.getDate() - 90);
 
