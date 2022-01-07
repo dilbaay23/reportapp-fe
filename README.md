@@ -1,4 +1,4 @@
-This is a frontend app for reportapp application. So First that reportapp application should be run.
+This is a frontend app for reportapp(Melexis Demo) application. So First that reportapp application should be run.
 
 # Start the Server
 
